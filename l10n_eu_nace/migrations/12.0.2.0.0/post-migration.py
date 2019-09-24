@@ -19,13 +19,3 @@ def migrate(cr, registry):
             partner.nace_id = env.ref(
                 category.get_external_id().get(category.id).replace('old_', '')
             )
-    cr.execute(
-        """
-        DELETE FROM res_partner_category
-        WHERE id IN (
-            SELECT res_id
-            FROM ir_model_data
-            WHERE name like 'old_nace_%'
-        )
-        """
-    )

@@ -8,5 +8,6 @@ def migrate(cr, version):
         UPDATE ir_model_data
         SET name=concat('old_', name)
         WHERE name LIKE 'nace_%'
+        AND module='l10n_eu_nace'
         """
     )
